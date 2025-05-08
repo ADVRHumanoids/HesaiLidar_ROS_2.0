@@ -100,7 +100,7 @@ int main(int argc, char** argv)
   // you can chose [!demo_ptr->IsPlayEnded()] or [1] 
   // If you chose !demo_ptr->IsPlayEnded(), ROS node will end with the end of the PCAP.
   // If you select 1, the ROS node does not end with the end of the PCAP.
-  while (!demo_ptr->IsPlayEnded())
+  while (ros::ok() && !demo_ptr->IsPlayEnded())
   {
     std::this_thread::sleep_for(std::chrono::microseconds(100));
   }
